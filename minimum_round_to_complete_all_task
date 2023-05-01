@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int minimumRounds(vector<int>& tasks) {
+        unordered_map<int,int>ump;
+        for(int i=0;i<tasks.size();i++)
+        {
+            ump[tasks[i]]++;
+        }
+        vector<int>res;
+        for(auto it:ump)
+        {
+            res.push_back(it.second);
+        }
+        sort(res.begin(),res.end());
+        int ans=0;
+        for(int i=0;i<res.size();i++)
+        {
+            if(res[i]==3)
+            {
+                ans++;
+            }
+            else if(res[i]==2)
+            {
+                ans++;
+            }
+           else if(res[i]>3)
+            {
+                int k=res[i]/3;
+                ans+=k;
+                if(res[i]%3!=0)
+                {
+                    ans++;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        
+        return ans;
+    }
+};
