@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maximum69Number (int num) {
+        string res=to_string(num);
+        int index=0;
+        int ans=-1;
+        for(int i=0;i<res.size();i++)
+        {
+            if(res[i]=='6')
+            {
+               index=i;
+               break;
+            }
+            else
+            {
+                continue;
+            }
+        }
+        res[index]='9';
+        ans=stoi(res);
+        return ans;
+    }
+};
